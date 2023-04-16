@@ -4,24 +4,27 @@ import { useParams } from "react-router-dom";
 
 export default function SingleDog() {
   const { dogId } = useParams();
-  const params = useParams(null);
+  const [singleDog, setSingleDog] = useState({});
 
   useEffect(() => {
     async function getDog() {
-      const dogFromApi = await fetchSingleDog(dogId);
-      ssetDog(dogFromApi);
+      setSingleDog(await fetchSingleDog(dogId));
     }
     getDog();
   }, []);
 
+  function isEven(dogId) {
+    if (dogId % 2 === 0) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+  console.log(singleDog);
   return (
     <div>
-      {dog && (
-        <ul>
-          <li>Name: {dog.name}</li>
-          <li>Age: {dog.age}</li>
-        </ul>
-      )}
+      <h2>Name: {singleDog.name}</h2>
+      {isEven(singleDog.id) ? <p>Breed: {singleDog.breed}</p> : null}
     </div>
   );
 }
