@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { postDog } from "../api";
 import { useNavigate } from "react-router-dom";
+import "../app.css";
 
 export default function CreateDogForm() {
   const [name, setName] = useState("");
@@ -8,8 +9,8 @@ export default function CreateDogForm() {
   const navigate = useNavigate();
 
   return (
-    <div>
-      <h2>Create a new Doggo!</h2>
+    <div className="form">
+      <h2 className="create">Create a new Doggo!</h2>
       <form
         onSubmit={async (e) => {
           e.preventDefault();

@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { fetchDogs, deleteDog } from "../api";
 import React from "react";
+import "../app.css";
 
 export default function AllDogs() {
   const navigate = useNavigate([]);
